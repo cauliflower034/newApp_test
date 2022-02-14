@@ -4,7 +4,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interPlugin from "@fullcalendar/interaction";
 
-import { InputTodo } from "./components/InputTodo";
+//import { InputTodo } from "./components/InputTodo";
 import { IncmpTodo } from "./components/IncmpTodo";
 import { CmpTodo } from "./components/CmpTodo";
 import { Progress } from "./components/Progress";
@@ -17,7 +17,9 @@ export const App = (props) => {
   const [change, setchange] = useState(false);
   const [myEvents, setMyEvents] = useState([]);
 
-  const onChangeTodoText = (event) => setTodoText(event.target.value);
+  const theme = "ゼミをもっと管理しやすくするためのアプリ制作とその研究";
+
+  //const onChangeTodoText = (event) => setTodoText(event.target.value);
 
   const progress_set = () => {
     let allcnt = 0;
@@ -40,21 +42,21 @@ export const App = (props) => {
     setchange(!change);
   };
 
-  const allDelete = () => {
-    // const pop = prompt("何を消す?", "here");
-    // console.log(pop);
-    // const allTodods = [...incmp,...cmp];
-    // console.log(allTodods);
-    setincmp([]);
-    setcmp([]);
-  };
+  // const allDelete = () => {
+  //   // const pop = prompt("何を消す?", "here");
+  //   // console.log(pop);
+  //   // const allTodods = [...incmp,...cmp];
+  //   // console.log(allTodods);
+  //   setincmp([]);
+  //   setcmp([]);
+  // };
 
-  const onClickAdd = () => {
-    if (TodoText === "") return;
-    const newTodos = [...incmp, TodoText];
-    setincmp(newTodos);
-    setTodoText("");
-  };
+  // const onClickAdd = () => {
+  //   if (TodoText === "") return;
+  //   const newTodos = [...incmp, TodoText];
+  //   setincmp(newTodos);
+  //   setTodoText("");
+  // };
 
   const onClickdel = (index) => {
     const newTodos = [...incmp];
@@ -114,15 +116,20 @@ export const App = (props) => {
 
   return (
     <>
-      <InputTodo
+      {/* <InputTodo
         todoText={TodoText}
         onChange={onChangeTodoText}
         onClick={onClickAdd}
         delclick={allDelete}
         setVal={progress_set}
-      />
+      /> */}
 
-      <Progress Setpro={progress_set} Value={Val} ChangeClick={ChangeDisplay} />
+      <Progress
+        Setpro={progress_set}
+        Value={Val}
+        ChangeClick={ChangeDisplay}
+        yourTheme={theme}
+      />
 
       <IncmpTodo
         incmp={incmp}

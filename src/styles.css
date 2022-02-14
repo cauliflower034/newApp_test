@@ -2,10 +2,6 @@ body {
   font-family: sans-serif;
 }
 
-p {
-  font-size: large;
-}
-
 input {
   border-radius: 16px;
   border: none;
@@ -23,6 +19,10 @@ button:hover {
   background-color: #ff7fff;
   color: #fff;
   cursor: pointer;
+}
+
+progress {
+  height: 2rem;
 }
 
 li {
@@ -43,8 +43,8 @@ progress {
 }
 .progress-area {
   background-color: aqua;
-  width: 400px;
-  height: 40px;
+  width: 90%;
+  height: 200px;
   padding: 8px;
   margin: 8px;
   border-radius: 8px;
@@ -52,7 +52,7 @@ progress {
 
 .incomplete-area {
   background-color: #c6ffe2;
-  width: 400px;
+  width: 90%;
   min-height: 200px;
   padding: 8px;
   margin: 8px;
@@ -61,7 +61,7 @@ progress {
 
 .complete-area {
   background-color: #ffffe0;
-  width: 400px;
+  width: 90%;
   min-height: 200px;
   padding: 8px;
   margin: 8px;
@@ -82,9 +82,11 @@ progress {
 }
 
 #change_area {
-  width: 400px;
-  height: 20px;
-  margin: 8px;
+}
+
+#myProgress {
+  margin-top: 0;
+  margin-left: 60px;
 }
 
 #change {
@@ -92,5 +94,14 @@ progress {
 }
 
 #Calendar {
-  width: 400px;
+  width: 90%;
+}
+
+.themeArea {
+}
+#themeName {
+  margin-left: 20px;
+  text-align: center;
+  margin-top: 0;
+  max-width: 90%;
 }
