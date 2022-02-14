@@ -84,15 +84,18 @@ export const App = (props) => {
 
   const handleDateClick = (info) => {
     let title = prompt("add events");
-    setMyEvents([
-      ...myEvents,
-      {
-        id: "",
-        title: title,
-        start: info.startStr,
-        end: info.endStr
-      }
-    ]);
+    if (title) {
+      setMyEvents([
+        ...myEvents,
+        {
+          id: "",
+          title: title,
+          start: info.startStr,
+          end: info.endStr
+        }
+      ]);
+    } else {
+    }
   };
 
   const eventDataClick = (info) => {
