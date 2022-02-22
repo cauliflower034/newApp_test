@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import interPlugin from "@fullcalendar/interaction";
 
 //import { InputTodo } from "./components/InputTodo";
 import { IncmpTodo } from "./components/IncmpTodo";
 import { CmpTodo } from "./components/CmpTodo";
 import { Progress } from "./components/Progress";
+import { Calender } from "./components/Calender";
+import { Header } from "./components/PageArea/Header";
 
 export const App = (props) => {
   const [TodoText, setTodoText] = useState("");
@@ -119,6 +118,7 @@ export const App = (props) => {
 
   return (
     <>
+      <Header />
       {/* <InputTodo
         todoText={TodoText}
         onChange={onChangeTodoText}
@@ -145,19 +145,11 @@ export const App = (props) => {
 
       <button onClick={testConsole}>Console</button>
 
-      <div id="Calendar">
-        <FullCalendar
-          plugins={[dayGridPlugin, interPlugin]}
-          initialView="dayGridMonth"
-          locale="ja"
-          selectable="true"
-          events={myEvents}
-          select={handleDateClick} //props.selectDateByDragAndDrop}
-          eventClick={eventDataClick}
-          //dateClick={handleDateClick}
-          //events={myEvents} //カレンダーで表示するイベント
-        />
-      </div>
+      <Calender
+        myEvents={myEvents}
+        handleDateClick={handleDateClick}
+        eventDataClick={eventDataClick}
+      />
     </>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { ProgressBar } from "./Object/ProgressBar";
 
 export const Progress = (props) => {
   const { Setpro, Value, ChangeClick, yourTheme } = props;
@@ -10,10 +11,8 @@ export const Progress = (props) => {
           <p>テーマ : </p>
           <p id="themeName">{yourTheme}</p>
         </div>
-        <p>進捗度 : {Value}%</p>
-        <progress id="myProgress" value={Value} max="100">
-          0%
-        </progress>
+
+        <ProgressBar Value={Value} />
 
         <div id="change_area">
           <button id="change" onClick={ChangeClick}>
