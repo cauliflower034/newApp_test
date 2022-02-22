@@ -1,4 +1,5 @@
-import React from "react";
+import styled from "styled-components";
+import { PrimaryButton } from "./Object/Button/PrimaryButton";
 import { ProgressBar } from "./Object/ProgressBar";
 
 export const Progress = (props) => {
@@ -6,7 +7,7 @@ export const Progress = (props) => {
   Setpro();
   return (
     <>
-      <div className="progress-area">
+      <SProgressArea>
         <div className="themeArea">
           <p>テーマ : </p>
           <p id="themeName">{yourTheme}</p>
@@ -14,12 +15,23 @@ export const Progress = (props) => {
 
         <ProgressBar Value={Value} />
 
-        <div id="change_area">
-          <button id="change" onClick={ChangeClick}>
-            change
-          </button>
-        </div>
-      </div>
+        <SChange>
+          <PrimaryButton onClick={ChangeClick}>change</PrimaryButton>
+        </SChange>
+      </SProgressArea>
     </>
   );
 };
+
+const SChange = styled.div`
+  float: right;
+`;
+
+const SProgressArea = styled.div`
+  background-color: aqua;
+  width: 90%;
+  height: 200px;
+  padding: 8px;
+  margin: 8px;
+  border-radius: 8px;
+`;
