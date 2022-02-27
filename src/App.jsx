@@ -9,76 +9,27 @@ import { Calender } from "./components/Calender";
 import { Header } from "./components/PageArea/Header";
 
 export const App = (props) => {
-  const [TodoText, setTodoText] = useState("");
-  const [incmp, setincmp] = useState([]);
-  const [cmp, setcmp] = useState([]);
   const [Val, setVal] = useState(0.0);
   const [change, setchange] = useState(false);
   const [myEvents, setMyEvents] = useState([]);
+  const [allCount, setAllCount] = useState(0);
+  const [cmpCount, setCmpCount] = useState(0);
 
   const theme = "ゼミをもっと管理しやすくするためのアプリ制作とその研究";
 
-  //const onChangeTodoText = (event) => setTodoText(event.target.value);
+  useEffect(() => {
+    setVal(allCount === 0 ? 0 : keisan());
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allCount]);
 
-  const progress_set = () => {
-    let allcnt = 0;
-    let cmpcnt = 0;
-    useEffect(() => {
-      incmp.map(() => allcnt++);
-      cmp.map(() => allcnt++);
-      cmp.map(() => cmpcnt++);
-      setVal(allcnt === 0 ? 0 : keisan());
-      //eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [incmp]);
-
-    const keisan = () => {
-      const V = (100 * cmpcnt) / allcnt;
-      return V.toFixed(0);
-    };
+  const keisan = () => {
+    const V = (100 * cmpCount) / allCount;
+    return V.toFixed(0);
   };
 
   const ChangeDisplay = () => {
+    console.log(change);
     setchange(!change);
-  };
-
-  // const allDelete = () => {
-  //   // const pop = prompt("何を消す?", "here");
-  //   // console.log(pop);
-  //   // const allTodods = [...incmp,...cmp];
-  //   // console.log(allTodods);
-  //   setincmp([]);
-  //   setcmp([]);
-  // };
-
-  // const onClickAdd = () => {
-  //   if (TodoText === "") return;
-  //   const newTodos = [...incmp, TodoText];
-  //   setincmp(newTodos);
-  //   setTodoText("");
-  // };
-
-  const onClickdel = (index) => {
-    const newTodos = [...incmp];
-    newTodos.splice(index, 1);
-    setincmp(newTodos);
-  };
-
-  const onClickCmp = (index) => {
-    const newincmpTodos = [...incmp];
-    newincmpTodos.splice(index, 1);
-    setincmp(newincmpTodos);
-
-    const newcmpTodos = [...cmp, incmp[index]];
-    setcmp(newcmpTodos);
-  };
-
-  const onClickBack = (index) => {
-    const newcmpTodos = [...cmp];
-    newcmpTodos.splice(index, 1);
-
-    const newincmpTodos = [...incmp, cmp[index]];
-    setcmp(newcmpTodos);
-    setincmp(newincmpTodos);
   };
 
   const handleDateClick = (info) => {
@@ -119,29 +70,12 @@ export const App = (props) => {
   return (
     <>
       <Header />
-      {/* <InputTodo
-        todoText={TodoText}
-        onChange={onChangeTodoText}
-        onClick={onClickAdd}
-        delclick={allDelete}
-        setVal={progress_set}
-      /> */}
 
-      <Progress
-        Setpro={progress_set}
-        Value={Val}
-        ChangeClick={ChangeDisplay}
-        yourTheme={theme}
-      />
+      <Progress Value={Val} ChangeClick={ChangeDisplay} yourTheme={theme} />
 
-      <IncmpTodo
-        incmp={incmp}
-        onCmp={onClickCmp}
-        onDel={onClickdel}
-        flag={change}
-      />
+      <IncmpTodo flag={change} />
 
-      <CmpTodo cmp={cmp} onBack={onClickBack} flag={change} />
+      <CmpTodo flag={change} />
 
       <button onClick={testConsole}>Console</button>
 

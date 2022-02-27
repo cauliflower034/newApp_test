@@ -1,10 +1,10 @@
 import styled from "styled-components";
+import { BaseButton } from "./Object/Button/BaseButton";
 import { PrimaryButton } from "./Object/Button/PrimaryButton";
 import { ProgressBar } from "./Object/ProgressBar";
 
 export const Progress = (props) => {
-  const { Setpro, Value, ChangeClick, yourTheme } = props;
-  Setpro();
+  const { Value, ChangeClick, yourTheme } = props;
   return (
     <>
       <SProgressArea>
@@ -17,6 +17,7 @@ export const Progress = (props) => {
 
         <SChange>
           <PrimaryButton onClick={ChangeClick}>change</PrimaryButton>
+          <BaseButton onClick={ChangeClick}>change</BaseButton>
         </SChange>
       </SProgressArea>
     </>
