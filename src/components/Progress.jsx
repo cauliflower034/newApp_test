@@ -16,8 +16,7 @@ export const Progress = (props) => {
         <ProgressBar Value={Value} />
 
         <SChange>
-          <PrimaryButton onClick={ChangeClick}>change</PrimaryButton>
-          <BaseButton onClick={ChangeClick}>change</BaseButton>
+          <PrimaryButton ClickEvent={ChangeClick}>change</PrimaryButton>
         </SChange>
       </SProgressArea>
     </>
