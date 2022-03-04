@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { BaseButton } from "./Object/Button/BaseButton";
 import { PrimaryButton } from "./Object/Button/PrimaryButton";
 import { ProgressBar } from "./Object/ProgressBar";
 
